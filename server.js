@@ -19,6 +19,7 @@ dotenv.load();
 var HomeController = require('./controllers/home');
 var userController = require('./controllers/user');
 var contactController = require('./controllers/contact');
+var aboutController = require('./controllers/about');
 
 // Passport OAuth strategies
 require('./config/passport');
@@ -69,6 +70,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', HomeController.index);
 app.get('/contact', contactController.contactGet);
 app.post('/contact', contactController.contactPost);
+app.get('/about', aboutController.index);
 app.get('/account', userController.ensureAuthenticated, userController.accountGet);
 app.put('/account', userController.ensureAuthenticated, userController.accountPut);
 app.delete('/account', userController.ensureAuthenticated, userController.accountDelete);
