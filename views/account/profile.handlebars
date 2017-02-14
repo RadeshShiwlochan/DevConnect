@@ -15,6 +15,12 @@
           {{/each}}
         </div>
       {{/if}}
+      <div>
+        <legend>Badges</legend>
+        {{#each user.badges}}
+          <p>{{_id}}: {{title}}</p>
+        {{/each}}
+      </div>
       <form method="POST" action="/account?_method=PUT" class="form-horizontal">
         <legend>Profile Information</legend>
         <div class="form-group">
@@ -66,6 +72,9 @@
       </form>
     </div>
   </div>
+
+
+
   <div class="panel">
     <div class="panel-body">
       <form method="POST" action="/account?_method=PUT" class="form-horizontal">
