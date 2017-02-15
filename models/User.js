@@ -9,6 +9,18 @@ var schemaOptions = {
   }
 };
 
+var badgeSchema = new mongoose.Schema({
+  name: String,
+  points: Number,
+  points_required: Number,
+  category: String,
+  keys: [String]
+}, schemaOptions);
+
+var Badge = mongoose.model('Badge', badgeSchema);
+
+module.exports = Badge;
+
 var userSchema = new mongoose.Schema({
   name: String,
   email: { type: String, unique: true},
@@ -63,3 +75,4 @@ userSchema.options.toJSON = {
 var User = mongoose.model('User', userSchema);
 
 module.exports = User;
+

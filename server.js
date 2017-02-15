@@ -26,6 +26,9 @@ var chatroomController  = require('./controllers/Chatroom');
 var resourcesController = require('./controllers/Resources');
 var FAQController       = require('./controllers/FAQ');
 
+// External javascript files
+var profileJs           = require('./public/js/profile');
+
 // Passport OAuth strategies
 require('./config/passport');
 

@@ -18,8 +18,9 @@
       <div>
         <legend>Badges</legend>
         {{#each user.badges}}
-          <p>{{_id}}: {{title}}</p>
+          <p>{{name}}</p>
         {{/each}}
+        <button onclick="giveBadge()">Give me a badge!</button>
       </div>
       <form method="POST" action="/account?_method=PUT" class="form-horizontal">
         <legend>Profile Information</legend>
