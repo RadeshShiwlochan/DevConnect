@@ -25,6 +25,7 @@ var aboutController     = require('./controllers/about');
 var chatroomController  = require('./controllers/Chatroom');
 var resourcesController = require('./controllers/Resources');
 var FAQController       = require('./controllers/FAQ');
+var forumController     = require('./controllers/forum');
 
 // Passport OAuth strategies
 require('./config/passport');
@@ -96,6 +97,18 @@ app.get('/auth/google', passport.authenticate('google', { scope: 'profile email'
 app.get('/auth/google/callback', passport.authenticate('google', { successRedirect: '/', failureRedirect: '/login' }));
 app.get('/auth/github', passport.authenticate('github', { scope: [ 'user:email profile repo' ] }));
 app.get('/auth/github/callback', passport.authenticate('github', { successRedirect: '/', failureRedirect: '/login' }));
+
+//test code for forum building
+app.get('/test', function(req,res,next){
+  if(req.user){
+    res.send(req.user._id);
+  }
+  else res.send("Not logged in!");
+});
+
+//forum code
+app.get('/forum', forumController.viewForum);
+
 
 // Production error handler
 if (app.get('env') === 'production') {
