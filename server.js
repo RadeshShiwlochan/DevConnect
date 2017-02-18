@@ -26,9 +26,6 @@ var chatroomController  = require('./controllers/Chatroom');
 var resourcesController = require('./controllers/Resources');
 var FAQController       = require('./controllers/FAQ');
 
-// External javascript files
-var profileJs           = require('./public/js/profile');
-
 // Passport OAuth strategies
 require('./config/passport');
 
@@ -76,9 +73,8 @@ app.use(function(req, res, next) {
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', HomeController.index);
-app.get('/contact', contactController.contactGet);
-app.post('/contact', contactController.contactPost);
 app.get('/about', aboutController.index);
+app.post('/about', contactController.contactPost);
 app.get('/chatroom', chatroomController.index);
 app.get('/resources', resourcesController.index);
 app.get('/FAQ', FAQController.index);

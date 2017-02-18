@@ -1,5 +1,6 @@
 var nodemailer = require('nodemailer');
-var transporter = nodemailer.createTransport({
+
+var transporter = nodemailer.createTransport("SMTP", {
   service: 'Mailgun',
   auth: {
     user: process.env.MAILGUN_USERNAME,
@@ -33,15 +34,23 @@ exports.contactPost = function(req, res) {
     return res.redirect('/contact');
   }
 
+  var sender_email = process.env.DEVCONNECT_ADMIN_EMAIL;
+
+  // if( sender_email.includes("yahoo.com") ){
+  //   sender_email = process.env.DEVCONNECT_ADMIN_EMAIL;
+  // }
+
+  // Set obj with mail options
   var mailOptions = {
-    from: req.body.name + ' ' + '<'+ req.body.email + '>',
-    to: 'your@email.com',
-    subject: '✔ Contact Form | Mega Boilerplate',
-    text: req.body.message
+    from: req.body.name + ' ' + '<'+ sender_email + '>',
+    to: process.env.DEVCONNECT_ADMIN_EMAIL,
+    subject: '✔ Contact Form Notification | DevConnect',
+    text: 'Message from ' + req.body.name + " at " + req.body.email + ":\n\n" + req.body.message
   };
 
+  // Send email through transporter
   transporter.sendMail(mailOptions, function(err) {
-    req.flash('success', { msg: 'Thank you! Your feedback has been submitted.' });
-    res.redirect('/contact');
+    req.flash('success', { msg: 'Thank you! Your feedback has been submitted. '});
+    res.redirect('/about');
   });
 };
