@@ -1,5 +1,9 @@
 'use strict';
 
+//CANON_URL is the URL that accesses our site in the browser. 
+//Update this constant's value whenever a change in server address occurs, such as at deployment.
+let CANON_URL = 'https://localhost:3000';
+
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
@@ -25,6 +29,7 @@ var aboutController     = require('./controllers/about');
 var chatroomController  = require('./controllers/Chatroom');
 var resourcesController = require('./controllers/Resources');
 var FAQController       = require('./controllers/FAQ');
+var forumController     = require('./controllers/forum');
 
 // Passport OAuth strategies
 require('./config/passport');
@@ -96,6 +101,10 @@ app.get('/auth/google', passport.authenticate('google', { scope: 'profile email'
 app.get('/auth/google/callback', passport.authenticate('google', { successRedirect: '/', failureRedirect: '/login' }));
 app.get('/auth/github', passport.authenticate('github', { scope: [ 'user:email profile repo' ] }));
 app.get('/auth/github/callback', passport.authenticate('github', { successRedirect: '/', failureRedirect: '/login' }));
+
+//code for the forum page
+app.get('/forum', forumController.index);
+app.get('/forum/:guid', forumController.index);
 
 // Production error handler
 if (app.get('env') === 'production') {
