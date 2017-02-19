@@ -15,9 +15,7 @@
         <li class="{{#ifeq title 'About'}}active{{/ifeq}}"><a href="/about">About</a></li>
         <li class="{{#ifeq title 'Chatroom'}}active{{/ifeq}}"><a href="/chatroom">Chatroom</a></li>
         <li class="{{#ifeq title 'Resources'}}active{{/ifeq}}"><a href="/resources">Resources</a></li>
-
         <li class="{{#ifeq title 'FAQ'}}active{{/ifeq}}"><a href="/FAQ">FAQ</a></li>
-
       </ul>
 
     <ul class="nav navbar-nav navbar-right">
@@ -27,7 +25,7 @@
           {{#if user.picture}}
             <img src="{{user.picture}}">
           {{else}}
-            <img src="{{user.gravatar}}">
+            <img src="{{user.gravatar}}" class="gravatar">
           {{/if}}
           {{#if user.name}}
             {{user.name}}
