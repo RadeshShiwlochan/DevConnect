@@ -23,7 +23,7 @@ exports.viewPost = function(req, res){
 			if(post){
 				return res.render('forum/viewpost',
 					{postTitle: post.postTitle, postBody: post.postBody, docreation: post.docreation, 
-						PAGE_IDENTIFIER: post.uuid});
+						PAGE_IDENTIFIER: post.uuid, CANON_URL: "http://localhost:3000"});
 			}
 			else {
 				return res.render('error', 
