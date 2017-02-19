@@ -23,7 +23,7 @@ var userController      = require('./controllers/user');
 var contactController   = require('./controllers/contact');
 var aboutController     = require('./controllers/about');
 var chatroomController  = require('./controllers/Chatroom');
-var codeplayController  = require('./controllers/codeplay');
+var resourcesController  = require('./controllers/resources');
 var forumController     = require('./controllers/forum');
 
 // Passport OAuth strategies
@@ -77,7 +77,7 @@ app.get('/contact', contactController.contactGet);
 app.post('/contact', contactController.contactPost);
 app.get('/about', aboutController.index);
 app.get('/chatroom', chatroomController.index);
-app.get('/codeplay', codeplayController.index);
+app.get('/resources', resourcesController.index);
 app.get('/forum', forumController.index);
 app.get('/account', userController.ensureAuthenticated, userController.accountGet);
 app.put('/account', userController.ensureAuthenticated, userController.accountPut);
