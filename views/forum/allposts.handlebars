@@ -7,20 +7,50 @@
       	<center><h1>DevConnect Forum</h1></center>
         <h3 class="subheader">Welcome to the DevConnect Forum! You can view and comment on existing posts here, or write your own.</h3>
         <br>
-        <div class="container">
-        	<ul class="list-group" id="post_list"></ul>
-        </div>
-        <script type='text/javascript'>
-        	var posts = {{postObject}};
-        	var list = '';
-        	for(var post in posts){
-        		var date = new Date(post.docreation).toDateString();
-        		list += '<li><div class="panel panel-default"><div class="panel-body">' + 
-        			'<p><strong>' + post.title + '</strong></p><p>' + post.body + '</p><p>Date Posted: ' + 
-        			date + '</p></div></div></li>'
-        	}
-        	$('#post_list').html(list);
-        </script>
+        <!-- Form for new post creation goes here. -->
+        <form method="POST">
+	        <legend>Create New Forum Post</legend>
+	        <div class="form-group">
+	          <label for="title">Title</label>
+	          <input type="text" name="postTitle" id="postTitle" placeholder="Post Title" class="form-control" required autofocus>
+	        </div>
+	        <div class="form-group">
+	          <label for="body">Post Body</label>
+	          <textarea name="postBody" id="postBody" placeholder="Your post's body here." class="form-control" required></textarea>
+	        </div>
+	        <div class="form-group">
+	          <button type="submit" class="btn btn-success">Create Post</button>
+	        </div>
+      	</form>
+
+        {{#if postObject}}
+	        <br>
+	        <div class="container">
+	        	<ul class="list-group" id="post_list">
+	        		{{#each postObject}}
+	        			<li>
+	        				<div class="panel panel-default">
+	        					<div class="panel-body">
+	        					<p><strong>{{postTitle}}</strong></p>
+	        					<p>{{postBody}}</p>
+	        					</div>
+	        				</div>
+	        			</li>
+	        		{{/each}}
+	        	</ul>
+	        </div>
+	        <!-- <script type='text/javascript'>
+	        	var posts = {{postObject}};
+	        	var list = '';
+	        	for(var post in posts){
+	        		var date = new Date(post.docreation).toDateString();
+	        		list += '<li><div class="panel panel-default"><div class="panel-body">' + 
+	        			'<p><strong>' + post.title + '</strong></p><p>' + post.body + '</p><p>Date Posted: ' + 
+	        			date + '</p></div></div></li>'
+	        	}
+	        	$('#post_list').html(list);
+	        </script> -->
+        {{/if}}
 	  </div>
   	</div>
   </div>

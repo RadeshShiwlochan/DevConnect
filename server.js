@@ -17,6 +17,7 @@ var dotenv = require('dotenv');
 var exphbs = require('express-handlebars');
 var mongoose = require('mongoose');
 var passport = require('passport');
+var uuidV4 = require('uuid/v4');
 
 // Load environment variables from .env file
 dotenv.load();
@@ -104,7 +105,8 @@ app.get('/auth/github/callback', passport.authenticate('github', { successRedire
 
 //code for the forum page
 app.get('/forum', forumController.index);
-app.get('/forum/:guid', forumController.index);
+app.get('/forum/:uuid', forumController.viewPost);
+app.post('/forum', forumController.createPost);
 
 // Production error handler
 if (app.get('env') === 'production') {
