@@ -1,0 +1,14 @@
+/* Profile Page 
+/* ----------------- */
+@import url("main.css");
+
+.badgeGraph {
+	width: 8%;
+	height: 8%;
+	float: left;
+}
+
+.badge img {
+	width: 10%;
+	height: 10%;
+}

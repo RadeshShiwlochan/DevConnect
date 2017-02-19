@@ -73,9 +73,8 @@ app.use(function(req, res, next) {
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', HomeController.index);
-app.get('/contact', contactController.contactGet);
-app.post('/contact', contactController.contactPost);
 app.get('/about', aboutController.index);
+app.post('/about', contactController.contactPost);
 app.get('/chatroom', chatroomController.index);
 app.get('/resources', resourcesController.index);
 app.get('/forum', forumController.index);
