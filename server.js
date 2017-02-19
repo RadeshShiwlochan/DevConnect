@@ -2,7 +2,7 @@
 
 //CANON_URL is the URL that accesses our site in the browser. 
 //Update this constant's value whenever a change in server address occurs, such as at deployment.
-let CANON_URL = 'https://localhost:3000';
+var CANON_URL = 'https://localhost:3000';
 
 var express = require('express');
 var path = require('path');

@@ -22,7 +22,8 @@ exports.viewPost = function(req, res){
 		Post.findOne({ uuid: req.params.uuid, active: true}, function(err, post){
 			if(post){
 				return res.render('forum/viewpost',
-					{postTitle: post.postTitle, postBody: post.postBody, docreation: post.docreation});
+					{postTitle: post.postTitle, postBody: post.postBody, docreation: post.docreation, 
+						PAGE_IDENTIFIER: post.uuid});
 			}
 			else {
 				return res.render('error', 
