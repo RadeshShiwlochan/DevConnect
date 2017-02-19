@@ -1,0 +1,27 @@
+<!-- use object {{postObject}} for the JSON object containing all the posts' data -->
+
+<div class="container-fluid">
+  <div class="row about-landing">
+    <div class="overlay">
+      <div class="content">
+      	<center><h1>DevConnect Forum</h1></center>
+        <h3 class="subheader">Welcome to the DevConnect Forum! You can view and comment on existing posts here, or write your own.</h3>
+        <br>
+        <div class="container">
+        	<ul class="list-group" id="post_list"></ul>
+        </div>
+        <script type='text/javascript'>
+        	var posts = {{postObject}};
+        	var list = '';
+        	for(var post in posts){
+        		var date = new Date(post.docreation).toDateString();
+        		list += '<li><div class="panel panel-default"><div class="panel-body">' + 
+        			'<p><strong>' + post.title + '</strong></p><p>' + post.body + '</p><p>Date Posted: ' + 
+        			date + '</p></div></div></li>'
+        	}
+        	$('#post_list').html(list);
+        </script>
+	  </div>
+  	</div>
+  </div>
+</div>
