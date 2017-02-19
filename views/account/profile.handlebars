@@ -1,4 +1,5 @@
 <div class="container">
+  <link rel="stylesheet" href="/css/profile.css">
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
     google.charts.load("current", {packages:["corechart"]});
@@ -9,12 +10,18 @@
         function draw{{_id}}() {
           var data = google.visualization.arrayToDataTable([
             ['Badge', 'Points'],
-            ['{{name}}',     40]
+            ['complete',     {{points}}],
+            ['incomplete', {{points_required}}]
           ]);
 
           var options = {
             pieHole: 0.4,
-            legend: {position: 'none'}
+            title: '{{name}}',
+            legend: {position: 'none'},
+              titleTextStyle: {
+                fontSize: 12, 
+                bold: true
+            }
           };
 
           var chart = new google.visualization.PieChart(document.getElementById('{{_id}}'));
@@ -35,6 +42,7 @@
           {{/each}}
         </div>
       {{/if}}
+
       {{#if messages.error}}
         <div role="alert" class="alert alert-danger">
           {{#each messages.error}}
@@ -43,13 +51,15 @@
         </div>
       {{/if}}
 
+      <!-- Badges -->
       <div>
         <legend>Badges</legend>
             {{#each user.badges}}
-              <div id="{{_id}}" style="width: 100px; height: 100px;"></div>
-              <p>{{name}}</p>
+              <span>              
+                <img src="/img/badge.png" alt="Badge" style="width:9%;height:9%;float:left;">
+                <div id="{{_id}}" class="badgeGraph"></div>
+              </span>
             {{/each}}
-        <button id="giveBadge">Give me a badge!</button>
       </div>
 
       <form method="POST" action="/account?_method=PUT" class="form-horizontal">

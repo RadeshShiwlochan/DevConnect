@@ -9,6 +9,7 @@ var schemaOptions = {
   }
 };
 
+// Badge schema
 var badgeSchema = new mongoose.Schema({
   name: String,
   points: Number,
@@ -20,6 +21,17 @@ var badgeSchema = new mongoose.Schema({
 var Badge = mongoose.model('Badge', badgeSchema);
 
 module.exports = Badge;
+
+// Create default badges that is to be used for all new users
+var front_end_dev_badge = new Badge({ name: 'FrontEnd', points: 4, points_required: 5, category: 'web', 
+  keys: ['html', 'css', 'javascript'] });
+var java_badge = new Badge({ name: 'JavaDev', points: 2, points_required: 5, category: 'java', 
+  keys: ['java'] });
+var back_end_dev_badge = new Badge({ name: 'BackEnd', points: 3, points_required: 5, category: 'backend',
+  keys: ['java', 'python', 'node', 'system', 'database'] });
+var database_badge = new Badge({ name: 'Database', points: 1, points_required: 5, category: 'database', 
+  keys: ['mongodb', 'sql', 'mysql', 'mariadb']});
+var data_analytics_badge = new Badge({ name: 'DataAnalytics', points: 4, points_required: 5, category: 'dataanalytics' });
 
 var userSchema = new mongoose.Schema({
   name: String,
@@ -36,8 +48,10 @@ var userSchema = new mongoose.Schema({
   google: String,
   github: String,
   vk: String,
-  badges: [badgeSchema]
+  badges: {type: [badgeSchema],
+      'default': [front_end_dev_badge, java_badge, back_end_dev_badge, database_badge, data_analytics_badge]}
 }, schemaOptions);
+
 
 userSchema.pre('save', function(next) {
   var user = this;
@@ -75,4 +89,3 @@ userSchema.options.toJSON = {
 var User = mongoose.model('User', userSchema);
 
 module.exports = User;
-
