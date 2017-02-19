@@ -1,4 +1,31 @@
 <div class="container">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    function drawCharts(){
+      {{#each user.badges}}
+        function draw{{_id}}() {
+          var data = google.visualization.arrayToDataTable([
+            ['Badge', 'Points'],
+            ['{{name}}',     40]
+          ]);
+
+          var options = {
+            pieHole: 0.4,
+            legend: {position: 'none'}
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('{{_id}}'));
+          chart.draw(data, options);
+        }
+        draw{{_id}}();
+      {{/each}}
+    };
+
+  </script>
+
   <div class="panel">
     <div class="panel-body">
       {{#if messages.success}}
@@ -15,13 +42,16 @@
           {{/each}}
         </div>
       {{/if}}
+
       <div>
         <legend>Badges</legend>
-        {{#each user.badges}}
-          <p>{{name}}</p>
-        {{/each}}
-        <button onclick="giveBadge()">Give me a badge!</button>
+            {{#each user.badges}}
+              <div id="{{_id}}" style="width: 100px; height: 100px;"></div>
+              <p>{{name}}</p>
+            {{/each}}
+        <button id="giveBadge">Give me a badge!</button>
       </div>
+
       <form method="POST" action="/account?_method=PUT" class="form-horizontal">
         <legend>Profile Information</legend>
         <div class="form-group">
