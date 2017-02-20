@@ -9,10 +9,10 @@
 			let roomID = '{{ roomID }}';
 			let user = '{{user.fullName }}';
 			let userPic = '{{user.profilePic }}';
-			// let chatUsers = $('.chatUsers');
-			// let chatInput = $("input[name='userInput']");
-			// let chatMessagesDiv = $('.chatMessages');
-			// let filePicker = $('#uploadFile');
+			let chatUsers = $('.chatUsers');
+			let chatInput = $("input[name='userInput']");
+			let chatMessagesDiv = $('.chatMessages');
+			let filePicker = $('#uploadFile');
 
 			socket.on('connect', () => {
 				socket.emit('join', {

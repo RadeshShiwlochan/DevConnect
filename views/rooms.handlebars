@@ -1,11 +1,11 @@
 <script src="/socket.io/socket.io.js"></script>
-<script>
+
 <script>
 	'use strict';
 	console.log("here")
 	(() => {
 		let socket = io('{{host}}' + '/roomslist');
-		//let newRoomInput = $("input[name='roomName']");
+		let newRoomInput = $("input[name='roomName']");
 
 		socket.on('connect', () => console.log('Connected to Server! '));
 

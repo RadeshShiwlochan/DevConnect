@@ -2,7 +2,7 @@ const config = require('../config');
 const h = require('../helpers');
 
 exports.index = function(req, res) {
-	let getRoom = h.findRoomById(req.app.locals.chatrooms, req.params.id);
+	let getRoom = h.findRoomByID(req.app.locals.chatrooms, req.params.id);
 	if(getRoom === undefined) {
 		return next();
 	} else {
