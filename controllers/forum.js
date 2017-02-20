@@ -23,8 +23,13 @@ exports.viewPost = function(req, res){
 		Post.findOne({ uuid: req.params.uuid, active: true}, function(err, post){
 			if(post){
 				return res.render('forum/viewpost',
-					{postTitle: post.postTitle, postBody: post.postBody, docreation: post.docreation, 
-						PAGE_IDENTIFIER: post.uuid, CANON_URL: "http://localhost:3000"});
+					{postTitle: post.postTitle, postBody: post.postBody, votes: post.votes, 
+						docreation: post.docreation, PAGE_IDENTIFIER: post.uuid,
+						userid: req.user._id.toString(), isOwner: (post._userid == req.user._id), 
+						isUpvoter: post.votes.upvotes.indexOf(req.user._id.toString())>0,
+						isDownvoter: post.votes.downvotes.indexOf(req.user._id.toString())>0,
+						numVotes: (post.votes.upvotes.length - post.votes.downvotes.length),
+						CANON_URL: "http://localhost:3000"});
 			}
 			else {
 				return res.render('error', 
@@ -32,6 +37,7 @@ exports.viewPost = function(req, res){
 			}
 		});
 	}
+	else return res.redirect('/login');
 };
 
 exports.createPost = function(req, res){
@@ -46,13 +52,13 @@ exports.createPost = function(req, res){
 
 	  	console.log('Errors gate passed.');
 
-	  	//TODO: convert whitespaces to respective chars in req.body.postBody (\n\t...)
 	  	var newPost = new Post({
 	  		postTitle: req.body.postTitle,
 	  		postBody: req.body.postBody,
 	  		active: true,
 	  		_userid: req.user._id,
-	  		uuid: uuidV4({ rng: uuidV4.nodeRNG })
+	  		uuid: uuidV4({ rng: uuidV4.nodeRNG }),
+	  		votes: {upvotes: [], downvotes: []}
 	  	});
 
 	  	newPost.save(function(err){
@@ -66,4 +72,36 @@ exports.createPost = function(req, res){
 	else return res.render('error',
 		{errorCode: "You must be signed in to interact with the DevConnect forum."});
 }
+
+exports.upvotePost = function(req, res){
+	if(req.user){
+		Post.findOne({ uuid: req.params.uuid, active: true}, function(err, post){
+			if(!err){
+				post.votes.upvotes.push(req.userid);
+				post.votes.downvotes.pull(req.userid);
+				post.save();
+			}
+			return res.send((post.votes.upvotes.length - post.votes.downvotes.length).toString());
+		});
+	}
+}
+
+exports.downvotePost = function(req, res){
+	if(req.user){
+		Post.findOne({ uuid: req.params.uuid, active: true}, function(err, post){
+			if(!err){
+				post.votes.downvotes.push(req.userid);
+				post.votes.upvotes.pull(req.userid);
+				post.save();
+			}
+			return res.send((post.votes.upvotes.length - post.votes.downvotes.length).toString());
+		});
+	}
+}
+
+
+
+
+
+
 

@@ -9,7 +9,7 @@ var postSchema = new mongoose.Schema({
 	docreation: Date, //date of creation
 	active: Boolean, //determines whether or not to display this post
 	_answerid: String,
-	votes: Number
+	votes: {upvotes: [String], downvotes: [String]}
 });
 
 var Post = mongoose.model('Post', postSchema);

@@ -106,6 +106,8 @@ app.get('/auth/github/callback', passport.authenticate('github', { successRedire
 app.get('/forum', forumController.index);
 app.get('/forum/:uuid', forumController.viewPost);
 app.post('/forum', forumController.createPost);
+app.post('/forum/:uuid/upvote', forumController.upvotePost);
+app.post('/forum/:uuid/downvote', forumController.downvotePost);
 
 // Production error handler
 if (app.get('env') === 'production') {

@@ -1,9 +1,24 @@
 <link rel="stylesheet" href="/css/forum.css"> 
+<p hidden id="page-id">{{PAGE_IDENTIFIER}}</p>
+<p hidden id="uid">{{userid}}</p>
 <div class="container">
   <div class="row panel letter">
   	<div class="postview">
   		<a href="/forum"><button type="button" class="btn btn-primary returnbtn">Return to Forum</button></a>
       	<center><h1 class="forumtitle">DevConnect Forum Post</h1></center>
+
+      	<div class="btn-group" role="group" id="vote-system">
+      		{{#unless isOwner}}
+      			{{#unless isUpvoter}}
+	      			<span class="glyphicon glyphicon-circle-arrow-up" id="upvote-button"></span>
+	      		{{/unless}}
+	      		{{#unless isDownvoter}}
+	      			<span class="glyphicon glyphicon-circle-arrow-down" id="downvote-button"></span>
+	      		{{/unless}}
+      		{{/unless}}
+      		<span class="label label-primary" id="num-votes">Votes: {{numVotes}}</span>
+      	</div>
+
         <legend>{{postTitle}}</legend>
         <br>
         <p style="white-space: pre-wrap">{{postBody}}</p>
@@ -37,3 +52,4 @@
 	</div>
   </div>
 </div>
+<script src='/js/post.js' type='text/javascript'></script>
