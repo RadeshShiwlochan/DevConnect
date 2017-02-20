@@ -15,7 +15,7 @@
 	        </div>
 	        <div class="form-group">
 	          <label for="body">Post Body</label>
-	          <textarea name="postBody" id="postBody" style="white-space: pre-wrap" placeholder="Your post's body here." class="form-control" required></textarea>
+	          <textarea name="postBody" id="postBody" placeholder="Your post's body here." class="form-control" required></textarea>
 	        </div>
 	        <div class="form-group">
 	          <button type="submit" class="btn btn-success">Create Post</button>
@@ -26,7 +26,7 @@
 	    <legend class="poststitle">Posts</legend>
         {{#if postObject}}
 	        <br>
-	        <div class="container" style="width: 80%">
+	        <div class="container" id="post-container">
 	        		{{#each postObject}}
         				<a href="/forum/{{uuid}}">
 	        				<div class="panel panel-default clickable" >

@@ -43,3 +43,13 @@
 {
     cursor: pointer;
 }
+
+#post-container
+{
+	width: 80%;
+}
+
+#postBody
+{
+	white-space: pre-wrap;
+}
