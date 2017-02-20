@@ -1,6 +1,10 @@
 /* Forum page
 /* ----------------- */
 
+.postscontainer {
+	padding-bottom: 20px;
+}
+
 .createpost {
 	width: 80%;
 	margin: 0 auto;
@@ -28,6 +32,11 @@
 	width: 80%;
 	margin: 0 auto;
 	padding-top: 20px;
+}
+
+/* Button */
+.returnbtn {
+	margin-top: 20px;
 }
 
 /* Post */
