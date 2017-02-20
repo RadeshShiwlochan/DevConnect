@@ -1,4 +1,4 @@
-/* FAQ page
+/* Forum page
 /* ---------------- */ 
 @import url("main.css");
 
@@ -26,6 +26,7 @@
 .search-input {
 	border-radius: 10px;
 	width: 94%;
+	color: #555;
 }
 
 @media (min-width: 768px) {

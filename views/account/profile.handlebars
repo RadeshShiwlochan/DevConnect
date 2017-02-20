@@ -1,4 +1,38 @@
 <div class="container">
+  <link rel="stylesheet" href="/css/profile.css">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    function drawCharts(){
+      {{#each user.badges}}
+        function draw{{_id}}() {
+          var data = google.visualization.arrayToDataTable([
+            ['Badge', 'Points'],
+            ['complete',     {{points}}],
+            ['incomplete', {{points_required}}]
+          ]);
+
+          var options = {
+            pieHole: 0.4,
+            title: '{{name}}',
+            legend: {position: 'none'},
+              titleTextStyle: {
+                fontSize: 12, 
+                bold: true
+            }
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('{{_id}}'));
+          chart.draw(data, options);
+        }
+        draw{{_id}}();
+      {{/each}}
+    };
+
+  </script>
+
   <div class="panel">
     <div class="panel-body">
       {{#if messages.success}}
@@ -8,6 +42,7 @@
           {{/each}}
         </div>
       {{/if}}
+
       {{#if messages.error}}
         <div role="alert" class="alert alert-danger">
           {{#each messages.error}}
@@ -15,6 +50,18 @@
           {{/each}}
         </div>
       {{/if}}
+
+      <!-- Badges -->
+      <div>
+        <legend>Badges</legend>
+            {{#each user.badges}}
+              <span>              
+                <img src="/img/badge.png" alt="Badge" style="width:9%;height:9%;float:left;">
+                <div id="{{_id}}" class="badgeGraph"></div>
+              </span>
+            {{/each}}
+      </div>
+
       <form method="POST" action="/account?_method=PUT" class="form-horizontal">
         <legend>Profile Information</legend>
         <div class="form-group">
@@ -66,6 +113,9 @@
       </form>
     </div>
   </div>
+
+
+
   <div class="panel">
     <div class="panel-body">
       <form method="POST" action="/account?_method=PUT" class="form-horizontal">

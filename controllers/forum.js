@@ -1,3 +1,4 @@
+
 var Post = require('../models/Post');
 var uuidV4 = require('uuid/v4');
 
@@ -65,3 +66,4 @@ exports.createPost = function(req, res){
 	else return res.render('error',
 		{errorCode: "You must be signed in to interact with the DevConnect forum."});
 }
+
