@@ -94,9 +94,9 @@
 		});
 	</script>
 	
-	<div class="container12" style="border: 1px solid black">
-		<div class="title-panel">
-			<h1>Chatroom title here... </h1>
+	<div class="container chatcontainer">
+		<div class="panel title-panel">
+			<h3>Chatroom title here... </h3>
 		</div>
 		<div class="panel roomsnav">
 			<div class="userPic">
@@ -106,41 +106,39 @@
 				<img src="{{user.gravatar}}" class="gravatar">
 				{{/if}}
 			</div>
-			<a href="/rooms" id="roomsBtn">Rooms</a>
-			<p class="userNameRooms">{{user.name}}</p>
+			<p class="userName">{{user.name}}</p>
+			<a href="/rooms"><button class="btn btn-secondary returntorooms" type="button">Rooms</button></a>
+
 		<div class="chatListDiv">
+
 			<div class="chatMessagesPanel">
+			
 				<div class="chatMessages">
-				<!-- Loop this for chat messages -->				
+				<!-- Loop this for chat messages -->	
+
 				<!-- loop end -->
 				</div>
+
 				<div class="typePanel">
 					<input type="text" name="userInput" placeholder="Type here and press enter">
 					<a href="#" id="uploadFile" class="fileUploadBtn">Photo</a>
 				</div>
+
 			</div>
+
 			<div class="chatUsers">
+
 			<!-- Loop this for chat users -->
+
 				<div class="userBlock">
 					<div class="userPic"><img src="" alt="John Doe"></div>
 					<div class="cuserName">John Doe</div>
 				</div>
 
 			<!-- loop end -->
-			</div>
-			<div class="typePanel">
-				<input type="text" name="userInput" placeholder="Type here and press enter">
-				<a href="#" id="uploadFile" class="fileUploadBtn">Photo</a>
-			</div>
-		</div>
 
-		<div class="chatUsers">
-		<!-- Loop this for chat users -->
-			<div class="userBlock">
-				<div class="userPic"><img src="" alt="John Doe"></div>
-				<div class="cuserName">John Doe</div>
 			</div>
-		<!-- loop end -->
+
 		</div>
 
 	</div>

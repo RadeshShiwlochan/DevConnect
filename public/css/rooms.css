@@ -3,25 +3,6 @@
 	margin:auto;
 }
 
-.titlePanelRooms {
-	position: relative;
-	width: 960px;
-	height: 50px;
-	background-color: gray;
-}
-
-.titlePanelRooms > h1 {
-	position: absolute;
-	color: rgb(255,255,255);
-	font-family: sans-serif;
-	font-weight: normal;
-	font-size: 20px;
-	margin: 0;
-	padding:0;
-	top:15px;
-	left: 10px;
-}
-
 #roomsBtnRooms {
 	position: absolute;
 	background-color: rgb(67, 202, 147);

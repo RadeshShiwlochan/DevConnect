@@ -1,20 +1,11 @@
-.container12 {
-	position:absolute;
-    width: 960px;
-    height: 70%;
-	border:1px solid black;
-	top:0;
-	bottom:0;
-	left:0;
-	right:0;
+.chatcontainer {
+    width: 70%;
 	margin:auto;
+	border: none;
 }
 
-.titlePanel {
-	position: relative;
-	width: 960px;
-	height: 50px;
-	background-color: rgb(0,0,0);
+.title-panel {
+	padding-left: 10px;
 }
 
 .titlePanel > h1 {
@@ -34,141 +25,65 @@
 	background-color: rgb(236, 236, 236);
 	width: 960px;
 	height: 70px;
-	border-bottom: 1px solid black;
-}
-
-#roomsBtn {
-	position: absolute;
-	background-color: rgb(67, 202, 147);
-	padding: 17px;
-	left: 698px;
-	top:10px;
-	width:90px;
-	color:#FFF;
-	font-family:sans-serif;
-	text-decoration: none;
-	text-align: center;
-	outline:none;
-}
-
-#roomsBtn:hover {
-	background-color: rgb(45, 169, 118);
 }
 
 .chatListDiv {
-	position: relative;
-	width: 960px;
-	height: 566px;
-	/* background-color: red; */
-}
-
-.roomsList {
-	margin:0px;
-	padding:0px;
-	list-style:none;
-	font-family: sans-serif;
-}
-
-.roomsList > a {
-	color: #FFF;
-	text-decoration: none;
-}
-
-.roomsList > a > li {
-	padding: 18px;
-	background-color: rgb(245, 235, 202);
-	color: #000;
-	margin-bottom: 1px;
+	height: 450px;
+	padding: 10px;
 }
 
 .userName {
-	position: absolute;
-    font-family: sans-serif;
-    font-size: 20px;
-    font-weight: normal;
-    top: 24px;
-    left: 77px;
+	float: left;
     margin: 0;
+    padding: 8px;
 }
 
-.userPicHolder {
-	position: absolute;
-    width: 50px;
-    height: 50px;
-    top: 10px;
-    left: 10px;
-    background: rgba(0, 0, 0, 0.63);
-}
-
-.userPicHolder > img {
+.userPic > img {
 	width: 50px;
 	height: 50px;
-}
-
-#logOutBtn {
-	position: absolute;
-	background-color: rgb(226, 98, 92);
-	padding: 17px;
-	left: 827px;
-	top:10px;
-	width:90px;
-	color:#FFF;
-	font-family:sans-serif;
-	text-decoration: none;
-	text-align: center;
-	outline:none;
-}
-
-#logOutBtn:hover {
-	background-color: rgb(232, 48, 39);
+	padding: 5px;
 }
 
 .chatMessagesPanel {
-	position: absolute;
-	/* background:red; */
-	height: 300px;
-	width: 692px;
-	border-right: 1px solid black;
+	width: 75%;
+	height: 100%;
+	float: left;
+	border-bottom: 1px solid;
+	border: 1px solid;
+	position: relative;
 }
 
 .chatUsers {
-	position: absolute;
-	height:566px;
 	background: #F7F4F4;
-	width: 267px;
-	left: 693px;
+	width: 20%;
+	height: 100%;
+	float: right;
 	overflow-x: hidden;
 	overflow-y: scroll;
+	border: 1px solid;
 }
 
 .chatMessages {
-	position: relative;
-	/* background-color: red; */
 	border-bottom: 1px solid;
-	width: 692px;
-	height: 270px;
-	top: 0px;
 	overflow-x: hidden;
 	overflow-y: scroll;
+	border: 1px solid;
 }
 
 .typePanel {
-	position: relative;
-	width:692px;
-	height: 75px;
+	width: 100%;
+	height: 10%;
 	background-color: #FFFFFF;
+	border-top: 1px solid;
+	position: absolute;
+	bottom: 0;
 }
 
 input[name='userInput'] {
-	position:absolute;
-	padding: 24px;
-	font-size: 22px;
-	width: 537px;
-	height: 23px;
-	top: 0px;
-	outline: 0px;
-	left: 0px;
+	padding: 12px;
+	font-size: 12px;
 	border: none;
+	width: 85%;
 }
 
 .chatBlock {
@@ -179,20 +94,6 @@ input[name='userInput'] {
 	padding: 10px;
 	margin: 16px;
 	min-height: 32px;
-}
-
-.userPic {
-	position: absolute;
-	width: 28px;
-	height: 28px;
-	top: 13px;
-	left: 10px;
-	background: rgba(0, 0, 0, 0.63);
-}
-
-.userPic > img {
-	width: 28px;
-	height: 28px;
 }
 
 .chatMsg {
@@ -212,15 +113,12 @@ input[name='userInput'] {
 .userBlock {
 	position: relative;
 	background: #E8E7E1;
-	height: 50px;
-	width: 253px;
-	margin-bottom: 1px;
 }
 
 .cuserName {
 	position: absolute;
-	font-family: sans-serif;
-	font-size: 17px;
+	padding:5px;
+	font-size: 11px;
 	font-weight: normal;
 	top: 17px;
 	left: 46px;
@@ -228,13 +126,7 @@ input[name='userInput'] {
 }
 
 .fileUploadBtn {
-    position: absolute;
-    right: 14px;
-    width: 43px;
-    overflow: hidden;
-    top: 22px;
-    height: 21px;
-    outline: none;
+	float: right;
     color: #FFF;
     background: rgb(67, 202, 147);
     padding: 10px;
