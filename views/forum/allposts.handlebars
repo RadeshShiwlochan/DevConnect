@@ -26,19 +26,16 @@
 	    <legend class="poststitle">Posts</legend>
         {{#if postObject}}
 	        <br>
-	        <div class="container">
-	        	<ul class="list-group" id="post_list">
+	        <div class="container" style="width: 80%">
 	        		{{#each postObject}}
         				<a href="/forum/{{uuid}}">
 	        				<div class="panel panel-default clickable" >
 	        					<div class="panel-body">
 	        					<p><strong>{{postTitle}}</strong></p>
-	        					<p>{{postBody}}</p>
 	        					</div>
 	        				</div>
         				</a>
 	        		{{/each}}
-	        	</ul>
 	        </div>
         {{/if}}
   </div>
