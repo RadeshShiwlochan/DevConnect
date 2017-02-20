@@ -1,3 +1,24 @@
+/* ======= VIEW POST PAGE ======= */
+$('#upvote-button').click(function(){
+  $.ajax({url: '/forum/' + $('#page-id').text() + '/upvote',
+    type: 'POST', userid: $('#uid').text(), success: function(result){
+    $('#num-votes').text(result.toString())
+  }});
+  $('#upvote-button').attr('hidden', 'true');
+  $('#downvote-button').removeAttr('hidden');
+  console.log('upvote should be hidden.');
+});
+
+$('#downvote-button').click(function(){
+  $.ajax({url: '/forum/' + $('#page-id').text() + '/downvote', 
+    type: 'POST', userid: $('#uid').text(), success: function(result){
+    $('#num-votes').text(result.toString())
+  }});
+  $('#downvote-button').attr('hidden', 'true');
+  $('#upvote-button').removeAttr('hidden');
+  console.log('downvote should be hidden.');
+});
+
 /* ======= ABOUT PAGE ======= */
 
 $('.about-scroll').click(function() {
@@ -125,5 +146,40 @@ function sync() {
   }
 
 }
+
+/* ======= VIEW SINGLE FORUM POST PAGE ======= */
+
+
+
+/*document.getElementById('upvote-button').onClick(function(){
+  var form = document.createElement('form');
+    form.setAttribute('method', 'post');
+    form.setAttribute('action', '/upvote');
+    form.style.display = 'hidden';
+    document.body.appendChild(form)
+    form.submit();
+});
+
+document.getElementById('downvote-button').onClick(function(){
+
+});*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ======= RESOURCES PAGE ======= */
