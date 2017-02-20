@@ -1,4 +1,3 @@
-
 var Post = require('../models/Post');
 var uuidV4 = require('uuid/v4');
 
@@ -66,8 +65,6 @@ exports.createPost = function(req, res){
 	  			{errorCode: "Something went wrong and we could not save your post. Please try again. " + err});
 	  		res.redirect('/forum/' + newPost.uuid);
 	  	});
-
-	  	console.log('Post save complete');
 	}
 	else return res.render('error',
 		{errorCode: "You must be signed in to interact with the DevConnect forum."});
@@ -77,10 +74,16 @@ exports.upvotePost = function(req, res){
 	if(req.user){
 		Post.findOne({ uuid: req.params.uuid, active: true}, function(err, post){
 			if(!err){
-				post.votes.upvotes.push(req.userid);
-				post.votes.downvotes.pull(req.userid);
-				post.save();
+				if(post.votes.upvotes.indexOf(req.user._id) == -1){
+					post.votes.upvotes.push(req.user._id);
+					post.votes.downvotes.pull(req.user._id);
+					post.save();
+				}
 			}
+			else {
+				console.log('vote db error: ' + err);
+			}
+			console.log('isUpvoter should be true: ' + (post.votes.upvotes.indexOf(req.user._id.toString()) > -1).toString());
 			return res.send((post.votes.upvotes.length - post.votes.downvotes.length).toString());
 		});
 	}
@@ -90,10 +93,16 @@ exports.downvotePost = function(req, res){
 	if(req.user){
 		Post.findOne({ uuid: req.params.uuid, active: true}, function(err, post){
 			if(!err){
-				post.votes.downvotes.push(req.userid);
-				post.votes.upvotes.pull(req.userid);
-				post.save();
+				if(post.votes.downvotes.indexOf(req.user._id) == -1){
+					post.votes.downvotes.push(req.user._id);
+					post.votes.upvotes.pull(req.user._id);
+					post.save();
+				}
 			}
+			else{
+				console.log('downvote db error: ' + err);
+			}
+			console.log('isUpvoter should be false: ' + (post.votes.upvotes.indexOf(req.user._id.toString()) > -1).toString());
 			return res.send((post.votes.upvotes.length - post.votes.downvotes.length).toString());
 		});
 	}

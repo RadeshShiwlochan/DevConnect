@@ -6,6 +6,7 @@ $('#upvote-button').click(function(){
   }});
   $('#upvote-button').attr('hidden', 'true');
   $('#downvote-button').removeAttr('hidden');
+  console.log('upvote should be hidden.');
 });
 
 $('#downvote-button').click(function(){
@@ -15,6 +16,7 @@ $('#downvote-button').click(function(){
   }});
   $('#downvote-button').attr('hidden', 'true');
   $('#upvote-button').removeAttr('hidden');
+  console.log('downvote should be hidden.');
 });
 
 /* ======= ABOUT PAGE ======= */
