@@ -30,8 +30,6 @@ var aboutController     = require('./controllers/about');
 var chatroomController  = require('./controllers/Chatroom');
 
 var resourcesController  = require('./controllers/resources');
-var FAQController       = require('./controllers/FAQ');
-
 var forumController     = require('./controllers/forum');
 
 // Passport OAuth strategies
