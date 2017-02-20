@@ -29,7 +29,7 @@ var contactController   = require('./controllers/contact');
 var aboutController     = require('./controllers/about');
 
 var chatroomController  = require('./controllers/rooms');
-const roomController   = require('./controllers/chatroom');
+var roomController   = require('./controllers/chatroom');
 var resourcesController  = require('./controllers/resources');
 var forumController     = require('./controllers/forum');
 
@@ -111,7 +111,7 @@ app.get('/forum', forumController.index);
 app.get('/forum/:uuid', forumController.viewPost);
 app.post('/forum', forumController.createPost);
 
-let ioServer = app =>{
+var ioServer = app =>{
   const server = require('http').Server(app);
   const io = require('socket.io')(server);
   require('./socket')(io);
