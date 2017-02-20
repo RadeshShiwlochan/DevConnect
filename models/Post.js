@@ -8,7 +8,8 @@ var postSchema = new mongoose.Schema({
 	postBody: String,
 	docreation: Date, //date of creation
 	active: Boolean, //determines whether or not to display this post
-	_answerid: String
+	_answerid: String,
+	votes: {upvotes: [String], downvotes: [String]}
 });
 
 var Post = mongoose.model('Post', postSchema);
