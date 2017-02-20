@@ -1,5 +1,32 @@
-<div class="container">
-	<div class="panel">
-		<h1>Welcome to our chatroom!</h1>
+
+	<div class="container">
+		<div class="titlePanel">
+			<h1>ChatCAT </h1>
+		</div>
+		<div class="controls">
+			<div class="userPicHolder"><img src="" alt="John Doe"></div>
+			<p class="userName"></p>
+			<a href="/rooms" id="roomsBtn">Rooms</a>
+			<a href="/logout" id="logOutBtn">Logout</a>
+		</div>
+		<div class="chatListDiv">
+			<div class="chatMessagesPanel">
+				<div class="chatMessages">
+				<!-- Loop this for chat messages -->				
+				<!-- loop end -->
+				</div>
+				<div class="typePanel">
+					<input type="text" name="userInput" placeholder="Type here and press enter">
+					<a href="#" id="uploadFile" class="fileUploadBtn">Photo</a>
+				</div>
+			</div>
+			<div class="chatUsers">
+			<!-- Loop this for chat users -->
+				<div class="userBlock">
+					<div class="userPic"><img src="" alt="John Doe"></div>
+					<div class="cuserName">John Doe</div>
+				</div>
+			<!-- loop end -->
+			</div>
+		</div>
 	</div>
-</div>
