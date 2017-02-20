@@ -1,0 +1,104 @@
+
+.title-panel {
+	margin: 0 auto;
+	width: 75%;
+	background-color: rgb(125,125,125);
+	padding-left: 15px;
+	padding-top: 8px;
+	font-size: 18px;
+}
+
+input[name='roomName'] {
+	position:absolute;
+	padding:16px;
+	font-size:18px;
+	width:280px;
+	top:10px;
+	left:10px;
+	border:none;
+	outline:none;
+}
+
+#createBtn {
+	position: absolute;
+	background-color: rgb(67, 202, 147);
+	padding: 17px;
+	left:327px;
+	top:10px;
+	width:90px;
+	color:#FFF;
+	font-family:sans-serif;
+	text-decoration: none;
+	text-align: center;
+	outline:none;
+}
+
+#createBtn:hover {
+	background-color: rgb(45, 169, 118);
+}
+
+.roomsListDiv {
+	position: relative;
+	width:460px;
+	height: 368px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.roomsList {
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	font-family: sans-serif;
+}
+
+.roomsList > a {
+	color: #FFF;
+	text-decoration: none;
+}
+
+.roomsList > a > li {
+	padding: 18px;
+	background-color: rgb(245, 235, 202);
+	color: #000;
+	margin-bottom: 1px;
+}
+
+.username {
+	float: left;
+    margin: 0;
+    padding: 8px;
+}
+
+.userPic {
+	float: left;
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.63);
+}
+
+.userPic > img {
+	width: 50px;
+	height: 50px;
+}
+
+.chatMessagesPanel {
+	width: 80%;
+}
+
+.logoutbutton {
+	float: right;
+}
+
+.chatnav {
+	width: 75%;
+	margin:  0 auto;
+	background-color: rgb(220,220,220);
+	padding: 20px;
+}
+
+.chatbody {
+	width: 75%;
+	margin:  0 auto;
+	background-color: rgb(220,220,220);
+}
