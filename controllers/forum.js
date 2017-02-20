@@ -104,7 +104,7 @@ exports.upvotePost = function(req, res){
 				console.log('vote db error: ' + err);
 			}
 			console.log('isUpvoter should be true: ' + (post.votes.upvotes.indexOf(req.user._id.toString()) > -1).toString());
-			return res.send((post.votes.upvotes.length - post.votes.downvotes.length).toString());
+			return res.send('Votes: ' + (post.votes.upvotes.length - post.votes.downvotes.length).toString());
 		});
 	}
 }
@@ -123,7 +123,7 @@ exports.downvotePost = function(req, res){
 				console.log('downvote db error: ' + err);
 			}
 			console.log('isUpvoter should be false: ' + (post.votes.upvotes.indexOf(req.user._id.toString()) > -1).toString());
-			return res.send((post.votes.upvotes.length - post.votes.downvotes.length).toString());
+			return res.send('Votes: ' + (post.votes.upvotes.length - post.votes.downvotes.length).toString());
 		});
 	}
 }
