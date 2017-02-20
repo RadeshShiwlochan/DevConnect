@@ -2,7 +2,7 @@
 /* ----------------- */
 
 .postscontainer {
-	padding-bottom: 20px;
+	padding: 20px;
 }
 
 .createpost {
@@ -32,11 +32,21 @@
 	width: 80%;
 	margin: 0 auto;
 	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 /* Button */
 .returnbtn {
 	margin-top: 20px;
+}
+
+.deletebtn {
+	float: right;
+}
+
+.deleteform {
+	padding: 0;
+	margin 0;
 }
 
 /* Post */

@@ -49,7 +49,9 @@ var userSchema = new mongoose.Schema({
   github: String,
   vk: String,
   badges: {type: [badgeSchema],
-      'default': [front_end_dev_badge, java_badge, back_end_dev_badge, database_badge, data_analytics_badge]}
+      'default': [front_end_dev_badge, java_badge, back_end_dev_badge, database_badge, data_analytics_badge]},
+  role: {type: String, 
+      'default': "user"}
 }, schemaOptions);
 
 

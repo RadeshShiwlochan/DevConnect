@@ -67,3 +67,21 @@ exports.createPost = function(req, res){
 		{errorCode: "You must be signed in to interact with the DevConnect forum."});
 }
 
+exports.deletePost = function(req, res){
+	if(req.user){
+		console.log("deleting post..");
+		Post.remove({ uuid:(req.params.postid) }, function (err) {
+		  if (err) {
+		  	req.flash('err', errors);
+		  	console.log("Failed to delete post");
+		  }		  	
+		  else {
+		  	req.flash('success', 'Post has been deleted!');
+		  	console.log("succeeded to delete post");
+		  }
+		
+		  res.redirect('/forum');
+		});
+	}
+
+}

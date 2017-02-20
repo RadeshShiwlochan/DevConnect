@@ -17,6 +17,7 @@ var dotenv = require('dotenv');
 var exphbs = require('express-handlebars');
 var mongoose = require('mongoose');
 var passport = require('passport');
+var permission = require('permission');
 var uuidV4 = require('uuid/v4');
 
 // Load environment variables from .env file
@@ -101,6 +102,7 @@ app.get('/auth/google', passport.authenticate('google', { scope: 'profile email'
 app.get('/auth/google/callback', passport.authenticate('google', { successRedirect: '/', failureRedirect: '/login' }));
 app.get('/auth/github', passport.authenticate('github', { scope: [ 'user:email profile repo' ] }));
 app.get('/auth/github/callback', passport.authenticate('github', { successRedirect: '/', failureRedirect: '/login' }));
+app.post('/forum/delete/:postid', require('permission')(['admin']), forumController.deletePost);
 
 //code for the forum page
 app.get('/forum', forumController.index);

@@ -7,6 +7,7 @@ $('.about-scroll').click(function() {
 });
 /* ======= ABOUT PAGE ======= */
 
+
 /* ======= RESOURCES PAGE */
 var toc = document.querySelector( '.toc' );
 var tocPath = document.querySelector( '.toc-marker path' );
