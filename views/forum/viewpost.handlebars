@@ -1,9 +1,10 @@
-<div class="container-fluid">
-  <div class="row about-landing">
-    <div class="overlay">
-      <div class="content">
-      	<center><h1>DevConnect Forum</h1></center>
-        <h3 class="subheader">{{postTitle}}</h3>
+<link rel="stylesheet" href="/css/forum.css"> 
+<div class="container">
+  <div class="row panel letter">
+  	<div class="postview">
+  		<a href="/forum"><button type="button" class="btn btn-primary">Return to Forum</button></a>
+      	<center><h1 class="forumtitle">DevConnect Forum Post</h1></center>
+        <legend>{{postTitle}}</legend>
         <br>
         <p>{{postBody}}</p>
         <br>
@@ -12,27 +13,27 @@
         <div id="disqus_thread"></div>
 
 	        <!-- This is the script that connects Disqus functionality with this webpage. -->
-					<script>
-						/**
-						*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-						*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-						
-						var disqus_config = function () {
-							this.page.url = '{{CANON_URL}}' + '/forum/' + '{{PAGE_IDENTIFIER}}';  // Replace PAGE_URL with your page's canonical URL variable
-							this.page.identifier = '{{PAGE_IDENTIFIER}}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable (this will be an auto-generated GUID that is passed here in a handlebars variable)
-							this.page.title = '{{postTitle}}';
-						};
-						
-						(function() { // DON'T EDIT BELOW THIS LINE
-						var d = document, s = d.createElement('script');
-						s.src = '//devconnect.disqus.com/embed.js';
-						s.setAttribute('data-timestamp', +new Date());
-						(d.head || d.body).appendChild(s);
-						})();
-					</script>
-					<script id="dsq-count-scr" src="//devconnect.disqus.com/count.js" async></script>
-					<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-			</div>
+			<script>
+				/**
+				*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+				*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+				
+				var disqus_config = function () {
+					this.page.url = '{{CANON_URL}}' + '/forum/' + '{{PAGE_IDENTIFIER}}';  // Replace PAGE_URL with your page's canonical URL variable
+					this.page.identifier = '{{PAGE_IDENTIFIER}}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable (this will be an auto-generated GUID that is passed here in a handlebars variable)
+					this.page.title = '{{postTitle}}';
+				};
+				
+				(function() { // DON'T EDIT BELOW THIS LINE
+				var d = document, s = d.createElement('script');
+				s.src = '//devconnect.disqus.com/embed.js';
+				s.setAttribute('data-timestamp', +new Date());
+				(d.head || d.body).appendChild(s);
+				})();
+			</script>
+			<script id="dsq-count-scr" src="//devconnect.disqus.com/count.js" async></script>
+			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 		</div>
 	</div>
+  </div>
 </div>

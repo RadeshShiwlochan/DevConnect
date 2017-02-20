@@ -1,14 +1,13 @@
 <!-- use object {{postObject}} for the JSON object containing all the posts' data -->
-
-<div class="container-fluid">
-  <div class="row about-landing">
-    <div class="overlay">
-      <div class="content">
-      	<center><h1>DevConnect Forum</h1></center>
-        <h3 class="subheader">Welcome to the DevConnect Forum! You can view and comment on existing posts here, or write your own.</h3>
+<link rel="stylesheet" href="/css/forum.css"> 
+<div class="container">
+  <div class="row panel letter">
+      	<center><h1 class="forumtitle">DevConnect Forum</h1></center>
+        <h3 class="panel-title">Welcome to the DevConnect Forum! You can view and comment on existing posts here, or write your own.</h3>
         <br>
+
         <!-- Form for new post creation goes here. -->
-        <form method="POST">
+        <form method="POST" class="createpost">
 	        <legend>Create New Forum Post</legend>
 	        <div class="form-group">
 	          <label for="title">Title</label>
@@ -23,35 +22,26 @@
 	        </div>
       	</form>
 
+
+	    <legend class="poststitle">Posts</legend>
         {{#if postObject}}
 	        <br>
 	        <div class="container">
 	        	<ul class="list-group" id="post_list">
 	        		{{#each postObject}}
-	        			<li>
-	        				<div class="panel panel-default">
+        				<a href="/forum/{{uuid}}">
+	        				<div class="panel panel-default clickable" >
 	        					<div class="panel-body">
 	        					<p><strong>{{postTitle}}</strong></p>
 	        					<p>{{postBody}}</p>
 	        					</div>
 	        				</div>
-	        			</li>
+        				</a>
 	        		{{/each}}
 	        	</ul>
 	        </div>
-	        <!-- <script type='text/javascript'>
-	        	var posts = {{postObject}};
-	        	var list = '';
-	        	for(var post in posts){
-	        		var date = new Date(post.docreation).toDateString();
-	        		list += '<li><div class="panel panel-default"><div class="panel-body">' + 
-	        			'<p><strong>' + post.title + '</strong></p><p>' + post.body + '</p><p>Date Posted: ' + 
-	        			date + '</p></div></div></li>'
-	        	}
-	        	$('#post_list').html(list);
-	        </script> -->
         {{/if}}
-	  </div>
-  	</div>
   </div>
+
+
 </div>

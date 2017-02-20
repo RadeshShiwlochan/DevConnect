@@ -1,0 +1,45 @@
+/* Forum page
+/* ----------------- */
+
+.createpost {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.subheader {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.forumtitle { 
+	padding: 20px;
+}
+
+.panel-title {
+	text-align: center;
+}
+
+#post_list div {
+	width: 85%;
+	float: right;
+}
+
+.poststitle {
+	width: 80%;
+	margin: 0 auto;
+	padding-top: 20px;
+}
+
+/* Post */
+
+.postview {
+	width: 75%;
+	margin: 0 auto;
+}
+
+/* Panels */
+
+.clickable
+{
+    cursor: pointer;
+}
