@@ -1,19 +1,18 @@
 
     <link rel="stylesheet" href="/css/chatroom.css">
-	<script src="/js/jquery-2.1.4.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="https://widget.cloudinary.com/global/all.js"></script>
 	<script>
 		'use strict';
 		$(() => {
-			let socket = io('<%= host %>' + '/chatter');
-			let roomID = '<%= roomID %>';
-			let user = '<%= user.fullName %>';
-			let userPic = '<%= user.profilePic %>';
-			let chatUsers = $('.chatUsers');
-			let chatInput = $("input[name='userInput']");
-			let chatMessagesDiv = $('.chatMessages');
-			let filePicker = $('#uploadFile');
+			let socket = io('{{host}}' + '/chatter');
+			let roomID = '{{ roomID }}';
+			let user = '{{user.fullName }}';
+			let userPic = '{{user.profilePic }}';
+			// let chatUsers = $('.chatUsers');
+			// let chatInput = $("input[name='userInput']");
+			// let chatMessagesDiv = $('.chatMessages');
+			// let filePicker = $('#uploadFile');
 
 			socket.on('connect', () => {
 				socket.emit('join', {

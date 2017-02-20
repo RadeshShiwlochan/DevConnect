@@ -1,10 +1,11 @@
-<script src="/js/jquery-2.1.4.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script>
+<script>
 	'use strict';
-	$(() => {
-		let socket = io('<%= host %>' + '/roomslist');
-		let newRoomInput = $("input[name='roomName']");
+	console.log("here")
+	(() => {
+		let socket = io('{{host}}' + '/roomslist');
+		//let newRoomInput = $("input[name='roomName']");
 
 		socket.on('connect', () => console.log('Connected to Server! '));
 
@@ -26,7 +27,7 @@
 			renderChatRooms(JSON.parse(chatrooms));
 		});
 
-		$('#createBtn').on('click', () => {
+		('#createBtn').on('click', () => {
 			if(newRoomInput.val() !== '') {
 				socket.emit('createNewRoom', newRoomInput.val());
 				newRoomInput.val('');
@@ -54,7 +55,7 @@
 	    <div class="input-group">
 	      <input type="text" class="form-control" placeholder="Create a new Chatroom...">
 	      <span class="input-group-btn">
-	        <button class="btn btn-secondary" type="button">Create</button>
+	        <button class="btn btn-secondary" id="createBtn" type="button">Create</button>
 	      </span>
 	    </div>
 	</div>

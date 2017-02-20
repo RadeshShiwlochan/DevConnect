@@ -1,6 +1,6 @@
 'use strict';
 //const router = require('express').Router();
-//const db = require('../db');
+const db = require('../db');
 const crypto = require('crypto');
 
 // // let _registerRoutes = (routes, method) => {

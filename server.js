@@ -39,11 +39,11 @@ require('./config/passport');
 var app = express();
 
 
-mongoose.connect(process.env.MONGODB);
-mongoose.connection.on('error', function() {
-  console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
-  process.exit(1);
-});
+// mongoose.connect(process.env.MONGODB);
+// mongoose.connection.on('error', function() {
+//   console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
+//   process.exit(1);
+// });
 
 var hbs = exphbs.create({
   defaultLayout: 'main',
@@ -84,7 +84,7 @@ app.get('/about', aboutController.index);
 app.post('/about', contactController.contactPost);
 
 app.get('/rooms', chatroomController.index);
-app.get('/chatroom', roomController.index);
+app.get('/chatroom:id', roomController.index);
 
 app.get('/resources', resourcesController.index);
 app.get('/forum', forumController.index);
