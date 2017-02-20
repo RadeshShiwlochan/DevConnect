@@ -215,11 +215,12 @@ input[name='roomName'] {
 .roomsListDiv {
 	overflow-x: hidden;
 	overflow-y: scroll;
+	margin-top: 8px;
 }
 
 .roomsList {
-	margin:0px;
-	padding:0px;
+	margin: 8px;
+	padding:8px;
 	list-style:none;
 }
 
@@ -295,4 +296,9 @@ input[name='roomName'] {
     font-family: sans-serif;
     text-decoration: none;
     text-decoration-line: none;
+}
+
+.roomsnav {
+	padding: 10px;
+	margin-top: 10px;
 }

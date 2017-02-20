@@ -51,10 +51,14 @@
 		<p class="userNameRooms">{{user.name}}</p>
 	</div>		
 	<div class="controls">
-		<input type="text" class="form-control" placeholder="Create a new Chatroom">
-		<a href="#"><button class="btn btn-primary" type="button">Create</button></a>
+	    <div class="input-group">
+	      <input type="text" class="form-control" placeholder="Create a new Chatroom...">
+	      <span class="input-group-btn">
+	        <button class="btn btn-secondary" type="button">Create</button>
+	      </span>
+	    </div>
 	</div>
-	<div class="roomsListDiv">
+	<div class="roomsListDiv panel">
 		<ul class="roomsList" id="roomsListUL">
 		<!-- Loop list items here -->
 			

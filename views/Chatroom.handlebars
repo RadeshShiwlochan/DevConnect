@@ -96,14 +96,18 @@
 	
 	<div class="container12" style="border: 1px solid black">
 		<div class="title-panel">
-			<h1>DevConnect 123 </h1>
+			<h1>Chatroom title here... </h1>
 		</div>
-		<div class="controls">
-			<div class="userPic"><img src="" alt="John Doe"></div>
-			<p class="userName"></p>
+		<div class="panel roomsnav">
+			<div class="userPic">
+				{{#if user.picture}}
+				<img src="{{user.picture}}">
+				{{else}}
+				<img src="{{user.gravatar}}" class="gravatar">
+				{{/if}}
+			</div>
 			<a href="/rooms" id="roomsBtn">Rooms</a>
-			<a href="/logout" id="logOutBtn">Logout</a>
-		</div>
+			<p class="userNameRooms">{{user.name}}</p>
 		<div class="chatListDiv">
 			<div class="chatMessagesPanel">
 				<div class="chatMessages">
