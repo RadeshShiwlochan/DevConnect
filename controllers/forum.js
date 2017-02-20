@@ -41,9 +41,11 @@ exports.createPost = function(req, res){
 		var errors = req.validationErrors();
 		if (errors) {
 		    req.flash('error', errors);
-		    return res.redirect('/forum');
 	  	}
 
+	  	console.log('Errors gate passed.');
+
+	  	//TODO: convert whitespaces to respective chars in req.body.postBody (\n\t...)
 	  	var newPost = new Post({
 	  		postTitle: req.body.postTitle,
 	  		postBody: req.body.postBody,
@@ -54,10 +56,11 @@ exports.createPost = function(req, res){
 
 	  	newPost.save(function(err){
 	  		if(err) return res.render('error',
-	  			{errorCode: "Something went wrong and we could not save your post. Please try again."});
+	  			{errorCode: "Something went wrong and we could not save your post. Please try again. " + err});
+	  		res.redirect('/forum/' + newPost.uuid);
 	  	});
 
-	  	res.redirect('/forum/' + newPost.uuid);
+	  	console.log('Post save complete');
 	}
 	else return res.render('error',
 		{errorCode: "You must be signed in to interact with the DevConnect forum."});
