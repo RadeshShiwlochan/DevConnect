@@ -1,0 +1,67 @@
+/* Forum page
+/* ---------------- */ 
+@import url("main.css");
+
+.search {
+	background: url(../img/questions.jpg);
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	color: white;
+}
+
+@media (max-width: 767px) {
+	.search-header {
+		display: none;
+		margin-bottom: 0;
+	}
+}
+
+.search-header {
+	font-weight: 300;
+	margin-bottom: 30px;
+}
+
+.search-input {
+	border-radius: 10px;
+	width: 94%;
+	color: #555;
+}
+
+@media (min-width: 768px) {
+	.search-input {
+		padding: 12px 20px 14px;
+		width: 720px;
+	}
+}
+
+@media (min-width: 992px) {
+	.search-input {
+		font-size: 15px;
+		width: 788px;
+	}
+}
+
+.content {
+	padding: 10% 0 13% 0;
+	text-align: center;
+}
+@media (max-width: 767px) {
+	.content {
+		padding: 3% 1px;
+	}
+}
+
+.navbar {
+	margin-bottom: 0px;
+}
+
+.faq-header {
+	font-weight: 300;
+	margin-bottom: 50px;
+}
+
+.faq-article {
+	padding: 50px 80px;
+}
