@@ -1,7 +1,7 @@
 .containerRooms {
 	position:absolute;
     width: 960px;
-    height: 687px;
+    height: 450px;
 	top:0;
 	bottom:0;
 	left:0;
@@ -127,7 +127,7 @@
 	/* background:red; */
 	height: 566px;
 	width: 692px;
-	border-right: 1px dashed black;
+	border-right: 1px solid black;
 }
 
 .chatUsersRooms {
@@ -138,12 +138,13 @@
 	left: 693px;
 	overflow-x: hidden;
 	overflow-y: scroll;
+	border-right:1px solid;
 }
 
 .chatMessagesRooms {
 	position: relative;
 	/* background-color: red; */
-	border-bottom: 1px dashed;
+	border: 1px solid;
 	width: 692px;
 	height: 490px;
 	top: 0px;
@@ -156,6 +157,7 @@
 	width:692px;
 	height: 75px;
 	background-color: #FFFFFF;
+	border-right: 1px solid;
 }
 
 input[name='userInput'] {

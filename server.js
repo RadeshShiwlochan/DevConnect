@@ -27,8 +27,9 @@ var HomeController      = require('./controllers/home');
 var userController      = require('./controllers/user');
 var contactController   = require('./controllers/contact');
 var aboutController     = require('./controllers/about');
-var chatroomController  = require('./controllers/Chatroom');
-var roomsController     = require('./controllers/rooms');
+
+var chatroomController  = require('./controllers/rooms');
+const roomController   = require('./controllers/chatroom');
 var resourcesController  = require('./controllers/resources');
 var forumController     = require('./controllers/forum');
 
@@ -81,8 +82,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', HomeController.index);
 app.get('/about', aboutController.index);
 app.post('/about', contactController.contactPost);
-app.get('/chatroom', chatroomController.index);
-app.get('/rooms', roomsController.index);
+
+app.get('/rooms', chatroomController.index);
+app.get('/chatroom', roomController.index);
+
 app.get('/resources', resourcesController.index);
 app.get('/forum', forumController.index);
 app.get('/account', userController.ensureAuthenticated, userController.accountGet);
@@ -108,6 +111,13 @@ app.get('/forum', forumController.index);
 app.get('/forum/:uuid', forumController.viewPost);
 app.post('/forum', forumController.createPost);
 
+let ioServer = app =>{
+  const server = require('http').Server(app);
+  const io = require('socket.io')(server);
+  require('./socket')(io);
+  return server;
+}
+
 // Production error handler
 if (app.get('env') === 'production') {
   app.use(function(err, req, res, next) {
@@ -116,7 +126,7 @@ if (app.get('env') === 'production') {
   });
 }
 
-app.listen(app.get('port'), function() {
+ioServer(app).listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
 

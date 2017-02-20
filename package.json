@@ -25,6 +25,8 @@
     "passport-github": "^1.1.0",
     "passport-google-oauth": "^1.0.0",
     "passport-local": "^1.0.0",
+    "socket.io": "^1.7.3",
+    "sockets": "^0.4.2",
     "uuid": "^3.0.1"
   },
   "devDependencies": {},
