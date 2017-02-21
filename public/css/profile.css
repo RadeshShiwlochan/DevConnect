@@ -12,3 +12,7 @@
 	width: 10%;
 	height: 10%;
 }
+
+.badgeGraph svg > g:nth-of-type(3) > text {
+	display: none;
+}
