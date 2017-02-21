@@ -1,4 +1,5 @@
 var Post = require('../models/Post');
+var User = require('../models/User');
 var uuidV4 = require('uuid/v4');
 
 //this handles both the view all posts '/forum' and the view specific post '/forum/:id' routes
@@ -44,7 +45,7 @@ exports.viewPost = function(req, res){
 						isUpvoter: post.votes.upvotes.indexOf(req.user._id.toString())>=0,
 						isDownvoter: post.votes.downvotes.indexOf(req.user._id.toString())>=0,
 						numVotes: (post.votes.upvotes.length - post.votes.downvotes.length),
-						CANON_URL: "http://localhost:3000"});
+						authorid: post._userid, CANON_URL: "http://localhost:3000"});
 			}
 			else {
 				return res.render('error', 
@@ -87,6 +88,7 @@ exports.createPost = function(req, res){
 }
 
 
+
 exports.deletePost = function(req, res){
 	if(req.user){
 		Post.findOne({ uuid: req.params.postid, active: true }, function(err, post){
@@ -105,6 +107,7 @@ exports.deletePost = function(req, res){
 }
 
 exports.upvotePost = function(req, res){
+	var badgeCategory = "JavaDev";
 	if(req.user){
 		Post.findOne({ uuid: req.params.uuid, active: true }, function(err, post){
 			if(!err){
@@ -112,6 +115,18 @@ exports.upvotePost = function(req, res){
 					post.votes.upvotes.push(req.user._id);
 					post.votes.downvotes.pull(req.user._id);
 					post.save();
+
+					User.findOne( { _id: req.body.authorid, "badges.name" : badgeCategory}, 'badges', function (err, obj) {
+	  					if (err) return handleError(err);
+
+	  					var badge = (obj.badges).find(function (element) { return (element.name == badgeCategory)});
+
+	  					if( badge.points < badge.points_required ){
+							User.update( { _id: req.body.authorid, "badges.name" : badgeCategory }, 
+				    		{$inc : {"badges.$.points" : 1} }, function(err, post){});
+				    		console.log(badge);
+	  					};
+					});
 				}
 			}
 			else {
@@ -123,6 +138,7 @@ exports.upvotePost = function(req, res){
 }
 
 exports.downvotePost = function(req, res){
+	var badgeCategory = "JavaDev";
 	if(req.user){
 		Post.findOne({ uuid: req.params.uuid, active: true}, function(err, post){
 			if(!err){
@@ -130,6 +146,18 @@ exports.downvotePost = function(req, res){
 					post.votes.downvotes.push(req.user._id);
 					post.votes.upvotes.pull(req.user._id);
 					post.save();
+
+					User.findOne( { _id: req.body.authorid, "badges.name" : badgeCategory}, 'badges', function (err, obj) {
+	  					if (err) return handleError(err);
+
+	  					var badge = (obj.badges).find(function (element) { return (element.name == badgeCategory)});
+
+	  					if( badge.points > 0 ){
+							User.update( { _id: req.body.authorid, "badges.name" : badgeCategory }, 
+				    		{$inc : {"badges.$.points" : -1} }, function(err, post){});
+				    		console.log(badge);
+	  					};
+					});
 				}
 			}
 			else{
@@ -139,6 +167,7 @@ exports.downvotePost = function(req, res){
 		});
 	}
 }
+
 
 
 

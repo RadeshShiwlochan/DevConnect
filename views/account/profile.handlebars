@@ -11,7 +11,7 @@
           var data = google.visualization.arrayToDataTable([
             ['Badge', 'Points'],
             ['complete',     {{points}}],
-            ['incomplete', {{points_required}}]
+            ['incomplete', {{points_required}} - {{points}}]
           ]);
 
           var options = {
