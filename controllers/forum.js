@@ -98,6 +98,8 @@ exports.upvotePost = function(req, res){
 					post.votes.downvotes.pull(req.user._id);
 					post.save();
 				}
+				User.update( { _id:req._userid , "badges.name" : "JavaDev" }, 
+	    		{$inc : {"badges.$.points" : 1} }, false, true);
 			}
 			else {
 				console.log('vote db error: ' + err);
