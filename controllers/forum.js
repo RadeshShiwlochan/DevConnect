@@ -28,7 +28,7 @@ exports.viewPost = function(req, res){
 						isUpvoter: post.votes.upvotes.indexOf(req.user._id.toString())>0,
 						isDownvoter: post.votes.downvotes.indexOf(req.user._id.toString())>0,
 						numVotes: (post.votes.upvotes.length - post.votes.downvotes.length),
-						CANON_URL: "http://localhost:3000"});
+						authorid: post._userid, CANON_URL: "http://localhost:3000"});
 			}
 			else {
 				return res.render('error', 

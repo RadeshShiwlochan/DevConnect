@@ -1,7 +1,7 @@
 /* ======= VIEW POST PAGE ======= */
 $('#upvote-button').click(function(){
   $.ajax({url: '/forum/' + $('#page-id').text() + '/upvote',
-    type: 'POST', userid: $('#uid').text(), success: function(result){
+    type: 'POST', userid: $('#uid').text(), authorid: $('#post-author').text(), success: function(result){
     $('#num-votes').text(result.toString())
   }});
   $('#upvote-button').attr('hidden', 'true');
@@ -11,7 +11,7 @@ $('#upvote-button').click(function(){
 
 $('#downvote-button').click(function(){
   $.ajax({url: '/forum/' + $('#page-id').text() + '/downvote', 
-    type: 'POST', userid: $('#uid').text(), success: function(result){
+    type: 'POST', userid: $('#uid').text(), authorid: $('#post-author').text(), success: function(result){
     $('#num-votes').text(result.toString())
   }});
   $('#downvote-button').attr('hidden', 'true');
