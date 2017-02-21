@@ -1,4 +1,5 @@
 var Post = require('../models/Post');
+var User = require('../models/User');
 var uuidV4 = require('uuid/v4');
 
 //this handles both the view all posts '/forum' and the view specific post '/forum/:id' routes
@@ -90,6 +91,7 @@ exports.deletePost = function(req, res){
 }
 
 exports.upvotePost = function(req, res){
+	var badgeCategory = "JavaDev";
 	if(req.user){
 		Post.findOne({ uuid: req.params.uuid, active: true}, function(err, post){
 			if(!err){
@@ -97,9 +99,19 @@ exports.upvotePost = function(req, res){
 					post.votes.upvotes.push(req.user._id);
 					post.votes.downvotes.pull(req.user._id);
 					post.save();
+
+					User.findOne( { _id: req.body.authorid, "badges.name" : badgeCategory}, 'badges', function (err, obj) {
+	  					if (err) return handleError(err);
+
+	  					var badge = (obj.badges).find(function (element) { return (element.name == badgeCategory)});
+
+	  					if( badge.points < badge.points_required ){
+							User.update( { _id: req.body.authorid, "badges.name" : badgeCategory }, 
+				    		{$inc : {"badges.$.points" : 1} }, function(err, post){});
+				    		console.log(badge);
+	  					};
+					});
 				}
-				User.update( { _id:req._userid , "badges.name" : "JavaDev" }, 
-	    		{$inc : {"badges.$.points" : 1} }, false, true);
 			}
 			else {
 				console.log('vote db error: ' + err);
@@ -111,6 +123,7 @@ exports.upvotePost = function(req, res){
 }
 
 exports.downvotePost = function(req, res){
+	var badgeCategory = "JavaDev";
 	if(req.user){
 		Post.findOne({ uuid: req.params.uuid, active: true}, function(err, post){
 			if(!err){
@@ -118,6 +131,18 @@ exports.downvotePost = function(req, res){
 					post.votes.downvotes.push(req.user._id);
 					post.votes.upvotes.pull(req.user._id);
 					post.save();
+
+					User.findOne( { _id: req.body.authorid, "badges.name" : badgeCategory}, 'badges', function (err, obj) {
+	  					if (err) return handleError(err);
+
+	  					var badge = (obj.badges).find(function (element) { return (element.name == badgeCategory)});
+
+	  					if( badge.points > 0 ){
+							User.update( { _id: req.body.authorid, "badges.name" : badgeCategory }, 
+				    		{$inc : {"badges.$.points" : -1} }, function(err, post){});
+				    		console.log(badge);
+	  					};
+					});
 				}
 			}
 			else{
