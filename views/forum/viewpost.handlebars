@@ -8,12 +8,12 @@
 
       	<div class="btn-group" role="group" id="vote-system">
       		{{#unless isOwner}}
-      			{{#unless isUpvoter}}
+      			
 	      			<span class="glyphicon glyphicon-circle-arrow-up" id="upvote-button"></span>
-	      		{{/unless}}
-	      		{{#unless isDownvoter}}
+	      		
+	      		
 	      			<span class="glyphicon glyphicon-circle-arrow-down" id="downvote-button"></span>
-	      		{{/unless}}
+	      		
       		{{/unless}}
       		<span class="label label-primary" id="num-votes">Votes: {{numVotes}}</span>
       	</div>
