@@ -28,8 +28,6 @@ var HomeController      = require('./controllers/home');
 var userController      = require('./controllers/user');
 var contactController   = require('./controllers/contact');
 var aboutController     = require('./controllers/about');
-var chatroomController  = require('./controllers/Chatroom');
-
 var resourcesController  = require('./controllers/resources');
 var forumController     = require('./controllers/forum');
 
@@ -82,7 +80,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', HomeController.index);
 app.get('/about', aboutController.index);
 app.post('/about', contactController.contactPost);
-app.get('/chatroom', chatroomController.index);
 app.get('/resources', resourcesController.index);
 app.get('/forum', forumController.index);
 app.get('/account', userController.ensureAuthenticated, userController.accountGet);
