@@ -1,11 +1,5 @@
 /* ======= VIEW POST PAGE ======= */
 $('#upvote-button').click(function(){
-<<<<<<< HEAD
-  $.ajax({url: '/forum/' + $('#page-id').text() + '/upvote',
-    type: 'POST', success: function(result){
-    $('#num-votes').text(result.toString())
-  }})
-=======
   $.ajax({
     url: '/forum/' + $('#page-id').text() + '/upvote',
     type: 'POST', 
@@ -17,19 +11,14 @@ $('#upvote-button').click(function(){
   $('#upvote-button').attr('hidden', 'true');
   $('#downvote-button').removeAttr('hidden');
   console.log('upvote should be hidden.');
->>>>>>> origin/badges
 });
 
 $('#downvote-button').click(function(){
   $.ajax({url: '/forum/' + $('#page-id').text() + '/downvote', 
-<<<<<<< HEAD
-    type: 'POST', success: function(result){
-=======
     type: 'POST', 
     contentType: 'application/json',
     data: JSON.stringify({authorid: $('#post-author').text()}),
     success: function(result){
->>>>>>> origin/badges
     $('#num-votes').text(result.toString())
   }})
 });
@@ -161,40 +150,3 @@ function sync() {
   }
 
 }
-
-/* ======= VIEW SINGLE FORUM POST PAGE ======= */
-
-
-
-/*document.getElementById('upvote-button').onClick(function(){
-  var form = document.createElement('form');
-    form.setAttribute('method', 'post');
-    form.setAttribute('action', '/upvote');
-    form.style.display = 'hidden';
-    document.body.appendChild(form)
-    form.submit();
-});
-
-document.getElementById('downvote-button').onClick(function(){
-
-});*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ======= RESOURCES PAGE ======= */
