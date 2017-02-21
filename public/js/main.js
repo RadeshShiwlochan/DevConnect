@@ -1,22 +1,16 @@
 /* ======= VIEW POST PAGE ======= */
 $('#upvote-button').click(function(){
   $.ajax({url: '/forum/' + $('#page-id').text() + '/upvote',
-    type: 'POST', userid: $('#uid').text(), success: function(result){
+    type: 'POST', success: function(result){
     $('#num-votes').text(result.toString())
-  }});
-  $('#upvote-button').attr('hidden', 'true');
-  $('#downvote-button').removeAttr('hidden');
-  console.log('upvote should be hidden.');
+  }})
 });
 
 $('#downvote-button').click(function(){
   $.ajax({url: '/forum/' + $('#page-id').text() + '/downvote', 
-    type: 'POST', userid: $('#uid').text(), success: function(result){
+    type: 'POST', success: function(result){
     $('#num-votes').text(result.toString())
-  }});
-  $('#downvote-button').attr('hidden', 'true');
-  $('#upvote-button').removeAttr('hidden');
-  console.log('downvote should be hidden.');
+  }})
 });
 
 /* ======= ABOUT PAGE ======= */

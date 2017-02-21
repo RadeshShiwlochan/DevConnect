@@ -7,7 +7,23 @@ exports.index = function(req, res){
 	if(req.user){
 		Post.find({active: true}, function(err, posts){
 			if(posts){
-				return res.render('forum/allposts', {postObject: posts});
+				var sortedPosts = [];
+				for (post in posts) {
+					sortedPosts.push(posts[post]);
+				}
+
+				//sort by number of votes descending
+				sortedPosts.sort(function(a, b){
+    				return (b.votes.upvotes.length - b.votes.downvotes.length) - (a.votes.upvotes.length - a.votes.downvotes.length);
+				});
+
+				console.log('Unsorted posts: ' + posts);
+
+				console.log();
+
+				console.log('Sorted posts: ' + sortedPosts);
+
+				return res.render('forum/allposts', {postObject: sortedPosts});
 			}
 			else return res.render('forum/allposts');
 		})
@@ -25,8 +41,8 @@ exports.viewPost = function(req, res){
 					{postTitle: post.postTitle, postBody: post.postBody, votes: post.votes, 
 						docreation: post.docreation, PAGE_IDENTIFIER: post.uuid,
 						userid: req.user._id.toString(), isOwner: (post._userid == req.user._id), 
-						isUpvoter: post.votes.upvotes.indexOf(req.user._id.toString())>0,
-						isDownvoter: post.votes.downvotes.indexOf(req.user._id.toString())>0,
+						isUpvoter: post.votes.upvotes.indexOf(req.user._id.toString())>=0,
+						isDownvoter: post.votes.downvotes.indexOf(req.user._id.toString())>=0,
 						numVotes: (post.votes.upvotes.length - post.votes.downvotes.length),
 						CANON_URL: "http://localhost:3000"});
 			}
@@ -73,26 +89,24 @@ exports.createPost = function(req, res){
 
 exports.deletePost = function(req, res){
 	if(req.user){
-		console.log("deleting post..");
-		Post.remove({ uuid:(req.params.postid) }, function (err) {
-		  if (err) {
-		  	req.flash('err', errors);
-		  	console.log("Failed to delete post");
-		  }		  	
-		  else {
-		  	req.flash('success', 'Post has been deleted!');
-		  	console.log("succeeded to delete post");
-		  }
-		
-		  res.redirect('/forum');
-		});
+		Post.findOne({ uuid: req.params.postid, active: true }, function(err, post){
+			if(err){
+				req.flash('err', errors);
+				console.log('Failed to mark post as inactive.');
+			}
+			else {
+				post.active = false;
+				post.save();
+			}
+			return res.redirect('/forum');
+		})
 	}
 
 }
 
 exports.upvotePost = function(req, res){
 	if(req.user){
-		Post.findOne({ uuid: req.params.uuid, active: true}, function(err, post){
+		Post.findOne({ uuid: req.params.uuid, active: true }, function(err, post){
 			if(!err){
 				if(post.votes.upvotes.indexOf(req.user._id) == -1){
 					post.votes.upvotes.push(req.user._id);
@@ -103,7 +117,6 @@ exports.upvotePost = function(req, res){
 			else {
 				console.log('vote db error: ' + err);
 			}
-			console.log('isUpvoter should be true: ' + (post.votes.upvotes.indexOf(req.user._id.toString()) > -1).toString());
 			return res.send('Votes: ' + (post.votes.upvotes.length - post.votes.downvotes.length).toString());
 		});
 	}
@@ -122,7 +135,6 @@ exports.downvotePost = function(req, res){
 			else{
 				console.log('downvote db error: ' + err);
 			}
-			console.log('isUpvoter should be false: ' + (post.votes.upvotes.indexOf(req.user._id.toString()) > -1).toString());
 			return res.send('Votes: ' + (post.votes.upvotes.length - post.votes.downvotes.length).toString());
 		});
 	}
