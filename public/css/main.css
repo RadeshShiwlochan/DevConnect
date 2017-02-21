@@ -245,7 +245,7 @@ footer {
 /* ------------------------- */
 
 textarea {
-  resize: none;
+  resize: vertical;
 }
 
 .form-control {
