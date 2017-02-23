@@ -21,7 +21,7 @@ var permission = require('permission');
 var uuidV4 = require('uuid/v4');
 
 var mongodb = require('mongodb');
-var uri = process.env.MONGOLAB_URI;
+var uri = 'mongodb://heroku_4bx1jh73:ik3humdq4ktskmjhdugum7bkv8@ds161169.mlab.com:61169/heroku_4bx1jh73';
 mongodb.MongoClient.connect(uri, function (err, db) {
     /* adventure! */
 });
