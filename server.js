@@ -20,6 +20,13 @@ var passport = require('passport');
 var permission = require('permission');
 var uuidV4 = require('uuid/v4');
 
+var mongodb = require('mongodb');
+var uri = process.env.MONGOLAB_URI;
+mongodb.MongoClient.connect(uri, function (err, db) {
+    /* adventure! */
+});
+
+
 // Load environment variables from .env file
 //dotenv.load();
 
