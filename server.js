@@ -20,13 +20,15 @@ var passport = require('passport');
 var permission = require('permission');
 var uuidV4 = require('uuid/v4');
 
+// Connect to mongolab
 var mongodb = require('mongodb');
 var uri = 'mongodb://heroku_4bx1jh73:ik3humdq4ktskmjhdugum7bkv8@ds161169.mlab.com:61169/heroku_4bx1jh73';
 mongodb.MongoClient.connect(uri, function (err, db) {
     /* adventure! */
 });
 
-
+// COMMENTED THIS OUT BECAUSE OF HEROKU ERROR
+// 
 // Load environment variables from .env file
 //dotenv.load();
 
@@ -43,7 +45,8 @@ require('./config/passport');
 
 var app = express();
 
-
+// COMMENTED THIS OUT BECAUSE OF HEROKU ERROR
+//
 // mongoose.connect(process.env.MONGODB);
 // mongoose.connection.on('error', function() {
 //   console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
