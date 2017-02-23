@@ -13,7 +13,7 @@ var session = require('express-session');
 var flash = require('express-flash');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
-var dotenv = require('dotenv');
+//var dotenv = require('dotenv');
 var exphbs = require('express-handlebars');
 var mongoose = require('mongoose');
 var passport = require('passport');
@@ -21,7 +21,7 @@ var permission = require('permission');
 var uuidV4 = require('uuid/v4');
 
 // Load environment variables from .env file
-dotenv.load();
+//dotenv.load();
 
 // Controllers
 var HomeController      = require('./controllers/home');
