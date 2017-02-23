@@ -7,7 +7,10 @@
 <title>DevConnect - Become a developer today</title>
 <link rel="stylesheet" href="/css/vendor/bootstrap.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/{{title}}.css">
+<link rel="stylesheet" href="/css/{{#ifeq title 'Home'}}home{{/ifeq}}.css">
+<link rel="stylesheet" href="/css/{{#ifeq title 'About'}}about{{/ifeq}}.css">
+<link rel="stylesheet" href="/css/{{#ifeq title 'Resources'}}resources{{/ifeq}}.css">
+<link rel="stylesheet" href="/css/{{#ifeq title 'Forum'}}forum{{/ifeq}}.css">
 <link rel="stylesheet" href="/css/main.css">
 <link rel="shortcut icon" href="/img/favicon.ico" />
 
